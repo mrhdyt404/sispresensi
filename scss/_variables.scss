@@ -1,0 +1,50 @@
+// SCSS Variables - Dark Glossy Luxury Theme
+// Sistem Presensi Karyawan GPS
+
+// Palette Background & Deep Obsidian Shades
+$bg-dark-base: #070a12;
+$bg-dark-surface: #0c1220;
+$bg-dark-elevated: #131c31;
+$bg-dark-card: rgba(16, 24, 42, 0.65);
+$bg-dark-card-hover: rgba(22, 33, 58, 0.85);
+
+// Glassmorphism Values
+$glass-bg-subtle: rgba(255, 255, 255, 0.03);
+$glass-bg-card: rgba(15, 23, 42, 0.7);
+$glass-bg-modal: rgba(11, 17, 32, 0.88);
+$glass-border: rgba(255, 255, 255, 0.08);
+$glass-border-hover: rgba(255, 255, 255, 0.18);
+$glass-border-active: rgba(56, 189, 248, 0.45);
+$glass-blur-sm: 8px;
+$glass-blur-md: 16px;
+$glass-blur-lg: 24px;
+
+// Neon Glow & Brand Accents
+$neon-cyan: #06b6d4;
+$neon-cyan-glow: rgba(6, 182, 212, 0.35);
+$neon-emerald: #10b981;
+$neon-emerald-glow: rgba(16, 185, 129, 0.35);
+$neon-indigo: #6366f1;
+$neon-indigo-glow: rgba(99, 102, 241, 0.35);
+$neon-rose: #f43f5e;
+$neon-rose-glow: rgba(244, 63, 94, 0.35);
+$neon-amber: #f59e0b;
+$neon-amber-glow: rgba(245, 158, 11, 0.35);
+$neon-purple: #a855f7;
+
+// Typography Colors
+$text-primary: #f8fafc;
+$text-secondary: #94a3b8;
+$text-muted: #64748b;
+$text-highlight: #38bdf8;
+
+// Radius & Shadows
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+$shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+$shadow-glass-lg: 0 16px 48px 0 rgba(0, 0, 0, 0.65);
+$shadow-neon-cyan: 0 0 25px rgba(6, 182, 212, 0.25);
+$shadow-neon-emerald: 0 0 25px rgba(16, 185, 129, 0.25);

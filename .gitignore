@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# User uploads (keep directory with .gitkeep)
+assets/uploads/*
+!assets/uploads/.gitkeep
+
+# Symlink compatibility
+sispresensi
+
+# OS & Logs
+.DS_Store
+Thumbs.db
+*.log

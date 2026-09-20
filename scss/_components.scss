@@ -1,0 +1,315 @@
+// SCSS Components & Interactive Widgets
+// Buttons, Badges, Camera Viewfinder, Map Dark Theme, Range Slider
+
+@use "variables" as *;
+
+// Glossy Buttons
+.btn-glossy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: $radius-md;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  // Gloss sheen overlay
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+
+  &:hover::after {
+    left: 140%;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  // Varian Cyan Primary
+  &-cyan {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.35);
+
+    &:hover {
+      background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.55);
+    }
+  }
+
+  // Varian Emerald Success (Absen Masuk)
+  &-emerald {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 18px rgba(16, 185, 129, 0.4);
+
+    &:hover {
+      background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+      box-shadow: 0 6px 28px rgba(16, 185, 129, 0.65);
+    }
+  }
+
+  // Varian Rose/Danger (Absen Pulang)
+  &-rose {
+    background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 18px rgba(244, 63, 94, 0.4);
+
+    &:hover {
+      background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%);
+      box-shadow: 0 6px 28px rgba(244, 63, 94, 0.65);
+    }
+  }
+
+  // Varian Secondary Dark Glass
+  &-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: $text-primary;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+  }
+}
+
+// Glossy Badges & Status Indicators
+.badge-glossy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: $radius-full;
+  backdrop-filter: blur(8px);
+  border: 1px solid transparent;
+
+  &-success {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #34d399;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+  }
+
+  &-warning {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.4);
+    color: #fbbf24;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+  }
+
+  &-danger {
+    background: rgba(244, 63, 94, 0.15);
+    border-color: rgba(244, 63, 94, 0.4);
+    color: #fb7185;
+    box-shadow: 0 0 12px rgba(244, 63, 94, 0.2);
+  }
+
+  &-info {
+    background: rgba(6, 182, 212, 0.15);
+    border-color: rgba(6, 182, 212, 0.4);
+    color: #38bdf8;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+  }
+}
+
+// Camera Viewfinder & Selfie Frame
+.camera-viewfinder {
+  position: relative;
+  width: 100%;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: #020617;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+  video, img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // Futuristic HUD Corner Brackets
+  .hud-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: $neon-cyan;
+    border-style: solid;
+    pointer-events: none;
+    z-index: 10;
+
+    &--tl {
+      top: 12px;
+      left: 12px;
+      border-width: 2px 0 0 2px;
+    }
+    &--tr {
+      top: 12px;
+      right: 12px;
+      border-width: 2px 2px 0 0;
+    }
+    &--bl {
+      bottom: 12px;
+      left: 12px;
+      border-width: 0 0 2px 2px;
+    }
+    &--br {
+      bottom: 12px;
+      right: 12px;
+      border-width: 0 2px 2px 0;
+    }
+  }
+
+  // Scanner Laser Line
+  .hud-scanner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $neon-cyan, transparent);
+    box-shadow: 0 0 12px $neon-cyan;
+    animation: scannerSweep 2.5s infinite ease-in-out;
+    pointer-events: none;
+  }
+}
+
+@keyframes scannerSweep {
+  0% { top: 5%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 95%; opacity: 0; }
+}
+
+// Leaflet Map Dark Styling Customization (100% Free OpenStreetMap tanpa watermark / API Key)
+.leaflet-container {
+  background: #090e18 !important;
+  font-family: inherit;
+  border-radius: $radius-md;
+}
+
+.map-dark-tiles {
+  filter: invert(1) hue-rotate(180deg) brightness(80%) contrast(125%);
+  -webkit-filter: invert(1) hue-rotate(180deg) brightness(80%) contrast(125%);
+}
+
+// Marker Radar Pulse for Live GPS
+.gps-pulse-marker {
+  width: 20px;
+  height: 20px;
+  background-color: $neon-cyan;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px $neon-cyan;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border-radius: 50%;
+    border: 2px solid $neon-cyan;
+    animation: gpsPing 1.8s infinite ease-out;
+  }
+}
+
+@keyframes gpsPing {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+// Office Marker Custom
+.office-pin-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.7);
+}
+
+// Range Slider Glossy Styling
+.slider-glossy {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition: background 0.2s;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22d3ee, #06b6d4);
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+    transition: transform 0.15s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+// Print mode helper
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print, .glass-navbar, .ambient-glow {
+    display: none !important;
+  }
+  .glass-panel, .glass-card {
+    background: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+  }
+}

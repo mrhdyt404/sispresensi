@@ -1,0 +1,162 @@
+// SCSS Glassmorphism & Glossy Aesthetic
+// Efek Kaca, Pantulan Cahaya (Sheen), dan Bayangan Mendalam
+
+@use "variables" as *;
+
+// Surface Glass Panel Utama
+.glass-panel {
+  background: $glass-bg-card;
+  backdrop-filter: blur($glass-blur-md);
+  -webkit-backdrop-filter: blur($glass-blur-md);
+  border: 1px solid $glass-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-glass;
+  position: relative;
+  overflow: hidden;
+
+  // Glossy reflection / specular highlight at top edge
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.25) 35%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.25) 65%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+}
+
+// Glass Card yang interaktif dengan efek hover
+.glass-card {
+  background: $bg-dark-card;
+  backdrop-filter: blur($glass-blur-sm);
+  -webkit-backdrop-filter: blur($glass-blur-sm);
+  border: 1px solid $glass-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-glass;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  &:hover {
+    background: $bg-dark-card-hover;
+    border-color: $glass-border-hover;
+    transform: translateY(-2px);
+    box-shadow: $shadow-glass-lg, 0 0 20px rgba(6, 182, 212, 0.1);
+  }
+}
+
+// Header Navigasi Glass
+.glass-navbar {
+  background: rgba(7, 10, 18, 0.82);
+  backdrop-filter: blur($glass-blur-lg);
+  -webkit-backdrop-filter: blur($glass-blur-lg);
+  border-bottom: 1px solid $glass-border;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+// Modal Backdrop & Container
+.glass-modal-backdrop {
+  background: rgba(4, 6, 12, 0.75);
+  backdrop-filter: blur($glass-blur-md);
+  -webkit-backdrop-filter: blur($glass-blur-md);
+}
+
+.glass-modal {
+  background: $glass-bg-modal;
+  backdrop-filter: blur($glass-blur-lg);
+  -webkit-backdrop-filter: blur($glass-blur-lg);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-glass-lg, 0 0 40px rgba(0, 0, 0, 0.8);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
+  }
+}
+
+// Inputs & Form Elements Glass
+.glass-input {
+  background: rgba(10, 16, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: $text-primary;
+  border-radius: $radius-sm;
+  padding: 0.65rem 1rem;
+  transition: all 0.25s ease;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    background: rgba(13, 22, 42, 0.85);
+    border-color: $neon-cyan;
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2), 0 0 15px rgba(6, 182, 212, 0.25);
+  }
+
+  option {
+    background: #0f172a;
+    color: #f8fafc;
+  }
+}
+
+// Background Ambient Glow Orbs
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.25;
+
+  &--cyan {
+    background: $neon-cyan;
+    width: 350px;
+    height: 350px;
+  }
+
+  &--emerald {
+    background: $neon-emerald;
+    width: 300px;
+    height: 300px;
+  }
+
+  &--purple {
+    background: $neon-purple;
+    width: 400px;
+    height: 400px;
+  }
+}
+
+// Custom Dark Scrollbars
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(10, 15, 26, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
